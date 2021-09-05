@@ -5,12 +5,14 @@ using System.Threading;
 
 namespace HomeWork_Threading_
 {
-    public class JobExecutor //: IJobExecutor
+    public class JobExecutor : IJobExecutor
     {
         // создаем семафор
         static Semaphore sem = new Semaphore(3, 3);
         Thread myThread;
-        int count = 3;// счетчик чтения
+        int Amount = 3;
+
+        int IJobExecutor.Amount => throw new NotImplementedException();
 
         public JobExecutor(int number)
         {
@@ -20,7 +22,7 @@ namespace HomeWork_Threading_
         }
         public void Start(object maxCurrent)
         {
-            while (count > 0)
+            while (Amount > 0)
             {
                 sem.WaitOne();
 
@@ -31,7 +33,7 @@ namespace HomeWork_Threading_
                 Stop();
                 Clear();
 
-                count--;
+                Amount--;
                 Thread.Sleep(1000);
             }
         }
@@ -52,6 +54,16 @@ namespace HomeWork_Threading_
         public void Clear()
         {
             sem.Release();
+        }
+
+        public void Start(int maxCurrent)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Add(Action action)
+        {
+            throw new NotImplementedException();
         }
     }
 }

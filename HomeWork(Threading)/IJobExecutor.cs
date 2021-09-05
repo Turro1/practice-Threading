@@ -4,7 +4,7 @@ using System.Text;
 
 namespace HomeWork_Threading_
 {
-    interface IJobExecutor
+    public interface IJobExecutor
     {
         // Кол-во задач в очереди на обработку
         int Amount { get; }
