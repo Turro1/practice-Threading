@@ -4,29 +4,21 @@ using System.Text;
 
 namespace HomeWork_Threading_
 {
-    public interface IJobExecutor
+    interface IJobExecutor
     {
-        /// Кол-во задач в очереди на обработку
+        // Кол-во задач в очереди на обработку
         int Amount { get; }
-        /// <summary>
-        /// Запустить обработку очереди и установить максимальное кол-во
-        //параллельных задач
-        /// </summary>
-        /// <param name="maxConcurrent">максимальное кол-во одновременно
-        //выполняемых задач</param>
-        void Start(int maxConcurrent);
-        /// <summary>
-        /// Остановить обработку очереди и выполнять задачи
-        /// </summary>
+
+        // Запустить обработку очереди и установить максимальное кол-во параллельных задач
+        void Start(int maxCurrent);
+
+        // Остановить обработку очереди и выполнять задачи
         void Stop();
-        /// <summary>
-        /// Добавить задачу в очередь
-        /// </summary>
-        /// <param name="action"></param>
+
+        // Добавить задачу в очередь
         void Add(Action action);
-        /// <summary>
-        /// Очистить очередь задач
-        /// </summary>
+
+        // Очистить очередь задач
         void Clear();
     }
 }
