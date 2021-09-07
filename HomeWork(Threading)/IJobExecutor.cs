@@ -10,7 +10,7 @@ namespace HomeWork_Threading_
         int Amount { get; }
 
         // Запустить обработку очереди и установить максимальное кол-во параллельных задач
-        void Start(int maxCurrent);
+        void Start(int maxConcurent);
 
         // Остановить обработку очереди и выполнять задачи
         void Stop();
