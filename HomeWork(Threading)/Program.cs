@@ -49,18 +49,26 @@ namespace HomeWork_Threading_
                         Console.WriteLine(parallelAmount);
                         
                     }
-                    
                 });
+                
                 stopwatch2.Stop();
 
                 Console.WriteLine($"Время вычисления среднего арифметического в основном потоке: {stopwatch.ElapsedTicks / 1000}");
                 Console.WriteLine($"Время вычисления среднего арифметического в паралельном потоке: {stopwatch2.ElapsedTicks / 1000}");
                 //Задача 2
                 Console.WriteLine("Задача №2");
-                for (int i = 1; i < 6; i++)
+
+                JobExecutor jobExecutor = new JobExecutor();
+                
+                for (int i = 0; i < 6; i++)
                 {
-                    JobExecutor jobExecutor = new JobExecutor(i);
+                    jobExecutor.Add(() =>
+                    {
+                        Console.WriteLine($"Выполняется задача №{i}");
+                    });
                 }
+                var a = jobExecutor.tasks;
+                jobExecutor.Start(3);
 
 
                 Console.ReadKey();
