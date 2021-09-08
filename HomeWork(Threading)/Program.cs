@@ -62,15 +62,10 @@ namespace HomeWork_Threading_
                 
                 for (int i = 0; i < 6; i++)
                 {
-                    jobExecutor.Add(() =>
-                    {
-                        Console.WriteLine($"Выполняется задача №{i}");
-                    });
+                
+                   JobExecutor jobExecutor = new JobExecutor(i);
+
                 }
-                var a = jobExecutor.tasks;
-                jobExecutor.Start(3);
-
-
                 Console.ReadKey();
             }
         }
